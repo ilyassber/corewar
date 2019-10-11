@@ -6,7 +6,7 @@
 #    By: iberchid <iberchid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/10/11 16:17:49 by iberchid          #+#    #+#              #
-#    Updated: 2019/09/16 23:04:55 by iberchid         ###   ########.fr        #
+#    Updated: 2019/10/10 16:12:57 by iberchid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS =  ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c
 		ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c \
 		ft_toupper.c ft_whitespace.c get_next_line.c alloc_fun.c free_fun.c \
 		ft_error.c ft_alloc.c ft_free.c ft_strfind.c ft_to_stack.c cut_until.c \
-		get_text.c print_hex.c
+		get_text.c print_hex.c ft_isnum.c
 OFILES = ft_atoi.o ft_bzero.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
 		 ft_isprint.o ft_itoa.o ft_lstadd.o ft_lstdel.o ft_lstdelone.o ft_lstiter.o \
 		 ft_lstmap.o ft_lstnew.o ft_memalloc.o ft_memccpy.o ft_memchr.o ft_memcmp.o \
@@ -37,7 +37,7 @@ OFILES = ft_atoi.o ft_bzero.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.
 		 ft_strsplit.o ft_strstr.o ft_strsub.o ft_strtrim.o ft_tolower.o \
 		 ft_toupper.o ft_whitespace.o get_next_line.o alloc_fun.o free_fun.o \
 		 ft_error.o ft_alloc.o ft_free.o ft_strfind.o ft_to_stack.o cut_until.o \
-		 get_text.o print_hex.o
+		 get_text.o print_hex.o ft_isnum.o
 NAME = libft.a
 HEADER = libft.h
 C = gcc

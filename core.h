@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:24:13 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/10 12:57:43 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/11 09:48:58 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include "libft/libft.h"
 # include "op.h"
 # include <stdio.h>
+
+# define SUCCESS			1
+# define ERROR				0
+# define UNEXPECTED_ARG		-10
+# define UNEXPECTED_FLAG	-11
+# define BAD_ORDER			-12
 
 # define EST ft_putstr("esti!!\n");
 
@@ -29,6 +35,14 @@ typedef struct		s_hold
 	void			*mem;
 	struct s_hold	*next;
 }					t_hold;
+
+typedef struct		s_args
+{
+	int				dump;
+	int				n;
+	int				order;
+	t_hold			**paths;
+}					t_args
 
 typedef struct		s_player
 {
@@ -69,6 +83,7 @@ typedef struct		s_core
 	int				ctd;
 	int				check;
 	int				p_nbr;
+	t_args			*args;
 	t_hold			**players;
 	t_hold			**procs;
 	t_g				*g;
@@ -96,6 +111,7 @@ void				duplicate_proc(t_proc *old, t_proc *new);
 t_hold				*holding(t_g *g, void *mem);
 void				append_to_hold(t_hold **stack, t_hold *holder);
 int					get_inst(t_core *core, t_proc *proc);
+
 int					op_add(t_core *core, t_proc *proc);
 int					op_aff(t_core *core, t_proc *proc);
 int					op_and(t_core *core, t_proc *proc);
@@ -112,5 +128,10 @@ int					op_sti(t_core *core, t_proc *proc);
 int					op_sub(t_core *core, t_proc *proc);
 int					op_xor(t_core *core, t_proc *proc);
 int					op_zjmp(t_core *core, t_proc *proc);
+
+int					check_players(t_args *args, char **argv, int argc);
+int					get_dump(char **argv, int argc);
+int					check_flags(char **argv, int argc);
+int					check_order(t_args *args, char **argv, int argc);
 
 #endif

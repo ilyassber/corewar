@@ -6,7 +6,7 @@
 /*   By: iberchid <iberchid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/06 08:21:00 by iberchid          #+#    #+#             */
-/*   Updated: 2019/09/27 08:24:15 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/10 16:12:28 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,6 @@ char				*cut_until(t_g *g, char *str, int n, int pass);
 char				*get_text(t_g *g, int fd, int size);
 char				int_to_hex(int n);
 void				print_hex(char *str, int size);
+int					ft_isnum(char *str);
 
 #endif

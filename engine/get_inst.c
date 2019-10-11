@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:25:04 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/07 20:58:43 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/10 21:07:30 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	get_inst(t_core *core, t_proc *proc)
 		get_args_type(proc->inst, *(core->area + proc->pointer + 1));
 		get_args(proc->inst, core->area + proc->pointer + 1);
 		(proc->inst->skip)++;
-		return (1);
+		return (SUCCESS);
 	}
 	(proc->inst->skip)++;
-	return (0);
+	return (ERROR);
 }

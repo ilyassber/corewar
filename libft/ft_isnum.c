@@ -1,42 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex.c                                        :+:      :+:    :+:   */
+/*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 22:36:24 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/10 20:02:06 by iberchid         ###   ########.fr       */
+/*   Created: 2019/10/10 16:04:47 by iberchid          #+#    #+#             */
+/*   Updated: 2019/10/10 16:13:32 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	int_to_hex(int n)
-{
-	if (n <= 9)
-		return (48 + n);
-	else
-		return (87 + n);
-}
-
-void	put_char_hex(char c)
-{
-	ft_putchar(int_to_hex((unsigned char)c / 16));
-	ft_putchar(int_to_hex((unsigned char)c % 16));
-}
-
-void	print_hex(char *str, int size)
+int	ft_isnum(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (i < size)
+	while (str && str[i] != '\0')
 	{
-		put_char_hex(str[i++]);
-		if (i % 2 == 0)
-			ft_putchar(' ');
-		if (i % 16 == 0)
-			ft_putchar('\n');
+		if (i == 0 && (str[i] == '-' || str[i] == '+'))
+			i++;
+		else if (ft_isdigit(str[i]))
+			i++;
+		else
+			return (0);
 	}
+	return (1);
 }

@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex.c                                        :+:      :+:    :+:   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/16 22:36:24 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/10 20:02:06 by iberchid         ###   ########.fr       */
+/*   Created: 2019/10/10 14:35:52 by iberchid          #+#    #+#             */
+/*   Updated: 2019/10/11 09:43:06 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../core.h"
 
-char	int_to_hex(int n)
-{
-	if (n <= 9)
-		return (48 + n);
-	else
-		return (87 + n);
-}
-
-void	put_char_hex(char c)
-{
-	ft_putchar(int_to_hex((unsigned char)c / 16));
-	ft_putchar(int_to_hex((unsigned char)c % 16));
-}
-
-void	print_hex(char *str, int size)
+int		get_dump(char **argv, int argc)
 {
 	int	i;
 
-	i = 0;
-	while (i < size)
+	i = 1;
+	while (i < argc)
 	{
-		put_char_hex(str[i++]);
-		if (i % 2 == 0)
-			ft_putchar(' ');
-		if (i % 16 == 0)
-			ft_putchar('\n');
+		if (ft_strcmp(argv[i], "-dump"))
+		{
+			if ((i + 1) < argc && ft_isnum(argv[i + 1]))
+			{
+				if (ft_atoi(argv[i + 1]) >= 0)
+					return (ft_atoi(argv[i + 1]));
+			}
+			return (UNEXPECTED_ARG);
+		}
+		i++;
 	}
+	return (-1);
+}
+
+void	parse_args(t_core *core, char **argv, int argc)
+{
+
 }
