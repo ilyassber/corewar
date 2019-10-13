@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   to_hold.c                                          :+:      :+:    :+:   */
+/*   init_arg.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/30 10:41:05 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/13 15:27:08 by iberchid         ###   ########.fr       */
+/*   Created: 2019/10/13 07:54:54 by iberchid          #+#    #+#             */
+/*   Updated: 2019/10/13 11:40:44 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../core.h"
 
-t_hold	*holding(t_g *g, void *mem)
+t_arg	*init_arg(t_g *g)
 {
-	t_hold	*hold;
+	t_arg	*arg;
 
-	hold = (t_hold *)ft_alloc(g->mem, sizeof(t_hold));
-	hold->mem = mem;
-	hold->next = NULL;
-	return (hold);
-}
-
-void	append_to_hold(t_hold **stack, t_hold *holder)
-{
-	if (stack && *stack)
-		holder->next = *stack;
-	if (stack)
-		*stack = holder;
+	arg = (t_arg *)ft_alloc(g->mem, sizeof(t_arg));
+	arg->dump = -1;
+	arg->n = 0;
+	arg->order = 0;
+	arg->paths = (t_hold **)ft_alloc(g->mem, sizeof(t_hold *));
+	*(arg->paths) = NULL;
+	return (arg);
 }

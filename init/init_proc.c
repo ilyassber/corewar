@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 21:48:06 by iberchid          #+#    #+#             */
-/*   Updated: 2019/09/28 13:21:31 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/13 12:45:16 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_proc	*init_proc(t_g *g)
 	proc->last_live = 0;
 	proc->queue = 0;
 	proc->wait = 0;
-	proc->func = NULL;
 	proc->inst = NULL;
 	while (i < 16)
 	{

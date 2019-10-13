@@ -6,7 +6,7 @@
 #    By: bel-bouz <bel-bouz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/24 00:09:47 by bel-bouz          #+#    #+#              #
-#    Updated: 2019/10/10 12:50:15 by iberchid         ###   ########.fr        #
+#    Updated: 2019/10/13 15:35:37 by iberchid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,20 @@ C_F =	core.c \
 		init/init_player.c \
 		init/init_proc.c \
 		init/init_inst.c \
+		init/init_arg.c \
 		parse/get_args.c \
 		parse/next_inst.c \
 		parse/parse_check.c \
 		parse/parser.c \
 		parse/read_value.c \
+		parse/parse_args.c \
 		tools/get_player.c \
 		tools/is_reg.c \
+		tools/proc_op.c \
+		tools/to_hold.c \
+		tools/get_set.c \
 		engine/get_inst.c \
+		error/on_error.c \
 		op/op_add.c \
 		op/op_aff.c \
 		op/op_and.c \

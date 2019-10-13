@@ -6,34 +6,39 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 14:29:48 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/05 22:27:41 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/13 12:37:37 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../core.h"
 
-char	*get_code(t_core *core, char *path)
+char static	*get_code(t_core *core, char *path)
 {
 	int		fd;
 	char	*code
 
 	fd = open(path, O_RDONLY);
+	if (fd == -1)
+		on_error(UNVALID_PATH);
 	code = get_text(core->g, fd, 3216);
 	close(fd);
 	return (code);
 }
 
-void	extract_players(t_core *core, char **args, int n)
+void		extract_players(t_core *core)
 {
 	int			i;
 	t_player	*player;
+	t_hold		*path;
 
-	i = 0;
-	core->p_nbr = n;
-	while (i < n)
+	i = 1;
+	path = *(core->arg->paths);
+	while (i <= core->arg->n && path)
 	{
-		player = init_player(core->g, get_code(core, arg[i]), i + 1);
+		player = init_player(core->g, get_code(core,
+					(char *)(path->mem)), i);
 		append_to_hold(core->players, holding(core->g, (void *)player));
+		path = path->next;
 		i++;
 	}
 }

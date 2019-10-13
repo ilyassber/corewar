@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:24:13 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/12 13:45:08 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/13 15:32:38 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define UNEXPECTED_FLAG	-11
 # define BAD_ORDER			-12
 # define UNVALID_ARG		-13
+# define UNVALID_PATH		-14
 
 # define EST ft_putstr("esti!!\n");
 
@@ -37,13 +38,13 @@ typedef struct		s_hold
 	struct s_hold	*next;
 }					t_hold;
 
-typedef struct		s_args
+typedef struct		s_arg
 {
 	int				dump;
 	int				n;
 	int				order;
 	t_hold			**paths;
-}					t_args
+}					t_arg;
 
 typedef struct		s_player
 {
@@ -68,6 +69,7 @@ typedef struct		s_inst
 
 typedef struct		s_proc
 {
+	int				id;
 	int				pointer;
 	int				carry;
 	int				reg[16];
@@ -83,8 +85,9 @@ typedef struct		s_core
 	int				cycle;
 	int				ctd;
 	int				check;
-	int				p_nbr;
-	t_args			*args;
+	char			**argv;
+	int				argc;
+	t_arg			*arg;
 	t_hold			**players;
 	t_hold			**procs;
 	t_g				*g;
@@ -96,6 +99,7 @@ t_player			*init_player(t_g *g, char *code, int id);
 t_core				*init_core(t_g *g);
 t_inst				*init_inst(t_g *g);
 t_proc				*init_proc(t_g *g);
+t_arg				*init_arg(t_g *g);
 void				init_inst_params(t_inst *inst);
 int					is_op(char *mem);
 int					to_next_inst(char *mem, t_inst *inst);
@@ -105,9 +109,9 @@ void				parser_loop(t_core *core);
 int					read_value(char *mem, int n);
 t_player			*get_player(t_core *core, int id);
 int					is_reg(t_proc *proc, int arg);
-int					get_value(t_core *core, t_proc *proc, int step);
+int					get_value(t_core *core, t_proc *proc, int step, int l);
 void				set_value(t_core *core, t_proc *proc, int step, int value);
-int					get_arg_value(t_core *core, t_proc *proc, int n);
+int					get_arg_value(t_core *core, t_proc *proc, int n, int l);
 void				duplicate_proc(t_proc *old, t_proc *new);
 t_hold				*holding(t_g *g, void *mem);
 void				append_to_hold(t_hold **stack, t_hold *holder);
@@ -130,12 +134,16 @@ int					op_sub(t_core *core, t_proc *proc);
 int					op_xor(t_core *core, t_proc *proc);
 int					op_zjmp(t_core *core, t_proc *proc);
 
-int					check_players(t_args *args, char **argv, int argc);
+int					check_players(t_arg *arg, char **argv, int argc);
 int					get_dump(char **argv, int argc);
 int					check_flags(char **argv, int argc);
-int					check_order(t_args *args, char **argv, int argc);
+int					check_order(t_arg *arg, char **argv, int argc);
 char				*get_arg_by_order(char **argv, int argc, int n);
 int					jump_flags(char **argv, int argc);
 void				on_error(t_g *g, int code);
+void				parse_args(t_core *core, char **argv, int argc);
+void				extract_players(t_core *core);
+void				append_proc(t_hold **procs, t_hold *hold);
+int					remove_proc(t_hold **procs, int id);
 
 #endif

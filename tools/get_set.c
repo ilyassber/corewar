@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 09:27:06 by iberchid          #+#    #+#             */
-/*   Updated: 2019/09/30 21:04:26 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/13 15:34:56 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	get_value(t_core *core, t_proc *proc, int step, int l)
 	while (i >= 0)
 	{
 		value = value * 256;
-		value = value + (int)(*(area + ((position + i) % MEM_SIZE)));
+		value = value + (int)(*(core->area + ((position + i) % MEM_SIZE)));
 		i--;
 	}
 	return (value);
@@ -60,4 +60,5 @@ int		get_arg_value(t_core *core, t_proc *proc, int n, int l)
 		return (proc->inst->args[n]);
 	else if (proc->inst->args_type[n] == 4)
 		return (get_value(core, proc, proc->inst->args[n], l));
+	return (0);
 }
