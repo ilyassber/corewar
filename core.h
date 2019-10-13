@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:24:13 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/13 15:32:38 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/13 23:17:10 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,6 @@ void				parse_args(t_core *core, char **argv, int argc);
 void				extract_players(t_core *core);
 void				append_proc(t_hold **procs, t_hold *hold);
 int					remove_proc(t_hold **procs, int id);
+void				init_procs(t_core *core);
 
 #endif

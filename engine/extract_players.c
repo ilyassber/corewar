@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 14:29:48 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/13 12:37:37 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/13 23:22:04 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 char static	*get_code(t_core *core, char *path)
 {
 	int		fd;
-	char	*code
+	char	*code;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		on_error(UNVALID_PATH);
+		on_error(core->g, UNVALID_PATH);
 	code = get_text(core->g, fd, 3216);
 	close(fd);
 	return (code);
