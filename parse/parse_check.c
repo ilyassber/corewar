@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 19:31:16 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/11 09:47:57 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/12 15:22:05 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	check_order(t_args *args, char **argv, int argc)
 	{
 		if (ft_strcmp(argv[i], "-n"))
 		{
-			args->order = 1;
-			return (SUCCESS);
+			args->order = 0;
+			return (0);
 		}
 		i++;
 	}
-	return (ERROR);
+	return (1);
 }
 
 int	check_flags(char **argv, int argc)
@@ -53,23 +53,26 @@ int	check_players(t_args *args, char **argv, int argc)
 	int	n;
 
 	i = 1;
-	n = 1;
+	n = 0;
 	while (i < argc)
 	{
-		if (ft_strcmp(argv[i], "-n") && (i + 1) < argc)
+		if (ft_strcmp(argv[i], "-n") && (i + 2) < argc)
 		{
+			n++;
 			args->n += (n - ft_atoi(argv[i + 1]));
 			i++;
-			n++;
 		}
 		else if (ft_strcmp(argv[i], "-n"))
 			return (UNEXPECTED_ARG);
 		i++;
 	}
-	if (args->n == 0)
-		return (SUCCESS);
-	else
+	if (args->n != 0)
 		return (BAD_ORDER);
+	if (n > 0)
+		args->n = n;
+	else
+		args->n = argc - jump_flags(argv, argc);
+	return (SUCCESS);
 }
 
 int	is_op(char *mem)

@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:24:13 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/11 09:48:58 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/12 13:45:08 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define UNEXPECTED_ARG		-10
 # define UNEXPECTED_FLAG	-11
 # define BAD_ORDER			-12
+# define UNVALID_ARG		-13
 
 # define EST ft_putstr("esti!!\n");
 
@@ -133,5 +134,8 @@ int					check_players(t_args *args, char **argv, int argc);
 int					get_dump(char **argv, int argc);
 int					check_flags(char **argv, int argc);
 int					check_order(t_args *args, char **argv, int argc);
+char				*get_arg_by_order(char **argv, int argc, int n);
+int					jump_flags(char **argv, int argc);
+void				on_error(t_g *g, int code);
 
 #endif
