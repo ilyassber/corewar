@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:50:51 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/07 19:05:30 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/14 21:53:48 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,19 @@ int	main(int argc, char **argv)
 {
 	t_g			*g;
 	t_core		*core;
-	t_player	*player;
-	char		*code;
-	int			fd;
+	//t_player	*player;
+	//char		*code;
+	//int			fd;
+	int			x;
 
-	if (argc == 2)
+	if (argc > 1)
 	{
 		g = init_env();
+		core = init_core(g, argv, argc);
+		x = engine(core);
+		ft_putnbr(x);
+		ft_putchar('\n');
+		/*
 		core = (t_core *)ft_alloc(g->mem, sizeof(t_core));
 		core->g = g;
 		fd = open(argv[1], O_RDONLY);
@@ -36,6 +42,7 @@ int	main(int argc, char **argv)
 		ft_putchar('\n');
 		core->area = player->exe;
 		parser_loop(core);
+		*/
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 13:10:35 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/13 15:15:44 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/14 14:39:14 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	duplicate_proc(t_proc *old, t_proc *new)
 		i++;
 	}
 	new->carry = old->carry;
-	new->last_live = old->last_live;
 }
 
 int		op_fork(t_core *core, t_proc *proc)

@@ -6,7 +6,7 @@
 #    By: bel-bouz <bel-bouz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/24 00:09:47 by bel-bouz          #+#    #+#              #
-#    Updated: 2019/10/13 23:20:53 by iberchid         ###   ########.fr        #
+#    Updated: 2019/10/14 12:20:47 by iberchid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ C_F =	core.c \
 		engine/check_proc.c \
 		engine/extract_players.c \
 		engine/init_procs.c \
+		engine/ctd_check.c \
 		engine/engine.c \
 		error/on_error.c \
 		op/op_add.c \

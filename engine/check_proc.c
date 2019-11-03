@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 22:31:10 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/07 07:16:47 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/14 21:24:59 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,28 @@ void	check_proc(t_core *core, t_proc *proc)
 	t_f	func;
 
 	func = NULL;
-	if (proc->wait > 0)
-		proc->wait--;
-	else
+	if (proc->queue == 0)
+		get_inst(core, proc);
+	proc->wait--;
+	if (proc->queue == 1 && proc->wait <= 0)
 	{
-		if (proc->queue == 1)
-		{
-			//execute_inst(proc);
-			func = g_func[proc->inst->inst];
-			func(core, proc);
-			proc->queue = 0;
-		}
-		else
-			get_inst(core, proc);
+		func = g_func[proc->inst->inst];
+		func(core, proc);
+		proc->queue = 0;
+		proc->pointer = (proc->pointer + proc->inst->skip) % MEM_SIZE;
+		proc->inst->skip = 0;
 	}
 }
 
-int		check_procs(t_core *core)
+void	check_procs(t_core *core)
 {
 	t_hold	*hold;
-	int		i;
 
-	i = 0;
 	hold = *(core->procs);
 	while (hold)
 	{
-		i++;
 		if (hold->mem)
 			check_proc(core, (t_proc *)(hold->mem));
 		hold = hold->next;
 	}
-	return (i);
 }

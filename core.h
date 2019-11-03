@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:24:13 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/13 23:17:10 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/24 08:56:31 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define UNVALID_PATH		-14
 
 # define EST ft_putstr("esti!!\n");
+# define RUN ft_putstr("RUUN RUUN!!\n");
 
 typedef struct		s_proc	t_proc;
 typedef struct		s_core	t_core;
@@ -73,7 +74,7 @@ typedef struct		s_proc
 	int				pointer;
 	int				carry;
 	int				reg[16];
-	int				last_live;
+	int				live;
 	int				queue;
 	int				wait;
 	t_inst			*inst;
@@ -84,6 +85,8 @@ typedef struct		s_core
 	char			*area;
 	int				cycle;
 	int				ctd;
+	int				last_check;
+	int				max_check;
 	int				check;
 	char			**argv;
 	int				argc;
@@ -96,7 +99,7 @@ typedef struct		s_core
 t_op				g_op_tab[17];
 t_f					g_func[17];
 t_player			*init_player(t_g *g, char *code, int id);
-t_core				*init_core(t_g *g);
+t_core				*init_core(t_g *g, char **argv, int argc);
 t_inst				*init_inst(t_g *g);
 t_proc				*init_proc(t_g *g);
 t_arg				*init_arg(t_g *g);
@@ -146,5 +149,11 @@ void				extract_players(t_core *core);
 void				append_proc(t_hold **procs, t_hold *hold);
 int					remove_proc(t_hold **procs, int id);
 void				init_procs(t_core *core);
+int					ctd_check(t_core *core);
+int					max_check(t_core *core);
+int					procs_len(t_core *core);
+void				check_procs(t_core *core);
+void				check_proc(t_core *core, t_proc *proc);
+int					engine(t_core *core);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 12:35:28 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/13 12:42:55 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/10/14 21:33:47 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../core.h"
 
-t_core	*init_core(t_g *g)
+t_core	*init_core(t_g *g, char **argv, int argc)
 {
 	t_core	*core;
 
@@ -20,6 +20,10 @@ t_core	*init_core(t_g *g)
 	core->cycle = 0;
 	core->ctd = CYCLE_TO_DIE;
 	core->check = 0;
+	core->last_check = 0;
+	core->max_check = 0;
+	core->argv = argv;
+	core->argc = argc;
 	core->players = (t_hold **)ft_alloc(g->mem, sizeof(t_hold *));
 	core->procs = (t_hold **)ft_alloc(g->mem, sizeof(t_hold *));
 	core->arg = init_arg(g);
