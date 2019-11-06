@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_area.c                                        :+:      :+:    :+:   */
+/*   dump.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/05 17:20:34 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/03 21:10:15 by iberchid         ###   ########.fr       */
+/*   Created: 2019/11/05 12:40:20 by iberchid          #+#    #+#             */
+/*   Updated: 2019/11/06 13:37:48 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../core.h"
 
-void	init_area(t_core *core)
+void	dump(t_core *core)
 {
-	int		div;
-	int		i;
-	t_hold	*hold;
+	t_g	*g;
 
-	div = MEM_SIZE / core->arg->n;
-	i = 0;
-	while (i < 682)
-	{
-		hold = *(core->players);
-		while (hold)
-		{
-			core->area[(div * (((t_player *)(hold->mem))->id - 1)) + i] =
-				((t_player *)(hold->mem))->exe[i];
-			hold = hold->next;
-		}
-		i++;
-	}
+	g = core->g;
+	print_hex(core->area, 64, 4096);
+	free_stack(core->g->mem);
+	exit(0);
 }

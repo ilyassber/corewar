@@ -6,7 +6,7 @@
 #    By: bel-bouz <bel-bouz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/24 00:09:47 by bel-bouz          #+#    #+#              #
-#    Updated: 2019/10/14 12:20:47 by iberchid         ###   ########.fr        #
+#    Updated: 2019/11/06 14:10:59 by iberchid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ C_F =	core.c \
 		init/init_proc.c \
 		init/init_inst.c \
 		init/init_arg.c \
+		init/init_area.c \
 		parse/get_args.c \
 		parse/next_inst.c \
 		parse/parse_check.c \
@@ -35,8 +36,10 @@ C_F =	core.c \
 		engine/extract_players.c \
 		engine/init_procs.c \
 		engine/ctd_check.c \
+		engine/dump.c \
 		engine/engine.c \
 		error/on_error.c \
+		output/print_procs.c \
 		op/op_add.c \
 		op/op_aff.c \
 		op/op_and.c \

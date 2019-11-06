@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 22:31:10 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/14 21:24:59 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/06 22:36:50 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	check_proc(t_core *core, t_proc *proc)
 		func = g_func[proc->inst->inst];
 		func(core, proc);
 		proc->queue = 0;
-		proc->pointer = (proc->pointer + proc->inst->skip) % MEM_SIZE;
+		if (proc->inst->inst != 9)
+			proc->pointer = (proc->pointer + proc->inst->skip) % MEM_SIZE;
 		proc->inst->skip = 0;
 	}
 }

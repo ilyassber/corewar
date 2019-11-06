@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 10:28:05 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/12 13:50:34 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/03 15:43:58 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 static void	print_error(int code)
 {
-	if (code == 0)
+	if (code == ERROR)
 		ft_putstr_fd("ERROR\n", 2);
-	else if (code == -10)
+	else if (code == UNEXPECTED_ARG)
 		ft_putstr_fd("ERROR : UNEXPECTED ARGUMENT\n", 2);
-	else if (code == -11)
+	else if (code == UNEXPECTED_FLAG)
 		ft_putstr_fd("ERROR : UNEXPECTED FLAG\n", 2);
-	else if (code == -12)
+	else if (code == BAD_ORDER)
 		ft_putstr_fd("ERROR : BAD ARGUMENTS ORDER\n", 2);
-	else if (code == -13)
+	else if (code == UNVALID_ARG)
 		ft_putstr_fd("ERROR : UNVALID ARGUMENT\n", 2);
+	else if (code == UNVALID_PATH)
+		ft_putstr_fd("ERROR : UNVALID PATH\n", 2);
 }
 
 void		on_error(t_g *g, int code)

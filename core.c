@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:50:51 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/14 21:53:48 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/06 12:32:05 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 		core->area = player->exe;
 		parser_loop(core);
 		*/
+		free_stack(g->mem);
 	}
 	return (0);
 }

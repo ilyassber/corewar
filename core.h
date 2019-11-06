@@ -6,13 +6,14 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:24:13 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/24 08:56:31 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/06 14:19:59 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CORE_H
 # define CORE_H
 
+# include <stdio.h>
 # include "libft/libft.h"
 # include "op.h"
 # include <stdio.h>
@@ -155,5 +156,9 @@ int					procs_len(t_core *core);
 void				check_procs(t_core *core);
 void				check_proc(t_core *core, t_proc *proc);
 int					engine(t_core *core);
+void				init_area(t_core *core);
+void				dump(t_core *core);
+void				print_proc(t_proc *proc);
+void				print_procs(t_core *core);
 
 #endif

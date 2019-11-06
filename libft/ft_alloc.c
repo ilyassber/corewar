@@ -6,7 +6,7 @@
 /*   By: bel-bouz <bel-bouz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 10:06:43 by iberchid          #+#    #+#             */
-/*   Updated: 2019/07/24 14:45:20 by bel-bouz         ###   ########.fr       */
+/*   Updated: 2019/11/06 12:07:01 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	init_mem(t_g *g)
 		free(g);
 		on_error_exit();
 	}
+	*(g->mem->full_stack) = NULL;
+	*(g->mem->temp) = NULL;
 	link_to_stack(g->mem, in_room((void *)g), 1);
 	link_to_stack(g->mem, in_room((void *)(g->mem)), 1);
 	link_to_stack(g->mem, in_room((void *)(g->mem->full_stack)), 1);
 	link_to_stack(g->mem, in_room((void *)(g->mem->temp)), 1);
-	*(g->mem->full_stack) = NULL;
-	*(g->mem->temp) = NULL;
 	g->env = NULL;
 }
 

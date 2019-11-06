@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 12:35:28 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/14 21:33:47 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/03 21:12:42 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_core	*init_core(t_g *g, char **argv, int argc)
 	t_core	*core;
 
 	core = (t_core *)ft_alloc(g->mem, sizeof(t_core));
+	core->area = (char *)ft_alloc(g->mem, sizeof(char) * 4096);
 	core->cycle = 0;
 	core->ctd = CYCLE_TO_DIE;
 	core->check = 0;

@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 10:41:05 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/13 15:27:08 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/03 16:00:48 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ t_hold	*holding(t_g *g, void *mem)
 
 void	append_to_hold(t_hold **stack, t_hold *holder)
 {
-	if (stack && *stack)
-		holder->next = *stack;
-	if (stack)
-		*stack = holder;
+	if (holder)
+	{
+		if (stack && *stack)
+			holder->next = *stack;
+		if (stack)
+			*stack = holder;
+	}
 }

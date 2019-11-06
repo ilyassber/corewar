@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 23:06:26 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/13 15:21:33 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/06 22:36:47 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	op_zjmp(t_core *core, t_proc *proc)
 			if (proc->pointer < 0)
 				proc->pointer = proc->pointer + MEM_SIZE;
 		}
+		else
+			proc->pointer = (proc->pointer + proc->inst->skip) % MEM_SIZE;
 		return (1);
 	}
 	return (0);

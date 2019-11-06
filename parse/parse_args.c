@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:35:52 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/24 09:01:20 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/06 18:00:09 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,9 @@ void		parse_args(t_core *core, char **argv, int argc)
 	i = 0;
 	path = NULL;
 	parse_args_check(core, argv, argc);
-	if (core->arg->n > 4 || core->arg->n < 2)
+	if (core->arg->n > 4 || core->arg->n < 1)
 		on_error(core->g, UNEXPECTED_ARG);
+	core->arg->dump = get_dump(argv, argc);
 	while (i < core->arg->n)
 	{
 		if (core->arg->order)

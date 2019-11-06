@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 14:50:27 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/13 15:22:22 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/03 17:33:50 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	append_proc(t_hold **procs, t_hold *hold)
 		next = next->next;
 	if (next)
 		next->next = hold;
+	else
+		*procs = hold;
 }
 
 int		remove_proc(t_hold **procs, int id)
