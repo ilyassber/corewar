@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 22:31:10 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/06 22:36:50 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/07 11:42:47 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ void	check_proc(t_core *core, t_proc *proc)
 	t_f	func;
 
 	func = NULL;
-	if (proc->queue == 0)
-		get_inst(core, proc);
-	proc->wait--;
+	if (proc->queue == 0 && !get_inst(core, proc))
+		proc->pointer++;
+	else
+		proc->wait--;
 	if (proc->queue == 1 && proc->wait <= 0)
 	{
+		get_args_type(proc->inst, *(core->area + proc->pointer + 1));
+		get_args(proc->inst, core->area + proc->pointer + 1);
+		(proc->inst->skip)++;
 		func = g_func[proc->inst->inst];
 		func(core, proc);
 		proc->queue = 0;
