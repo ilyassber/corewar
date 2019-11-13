@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 22:58:25 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/03 17:34:24 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/13 17:13:32 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_procs(t_core *core)
 	while (i <= core->arg->n)
 	{
 		proc = init_proc(core->g);
-		proc->reg[0] = i;
+		proc->reg[0] = -i;
 		proc->inst = init_inst(core->g);
 		proc->pointer = (MEM_SIZE / core->arg->n) * (i - 1);
 		append_proc(core->procs, holding(core->g, (void *)proc));

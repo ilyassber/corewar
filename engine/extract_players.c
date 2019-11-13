@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 14:29:48 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/03 17:36:14 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/12 21:49:34 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ void		extract_players(t_core *core)
 	t_player	*player;
 	t_hold		*path;
 
-	i = 1;
+	i = core->arg->n;
 	path = *(core->arg->paths);
-	while (i <= core->arg->n && path)
+	while (i >= 0 && path)
 	{
 		player = init_player(core->g, get_code(core,
 					(char *)(path->mem)), i);
 		append_to_hold(core->players, holding(core->g, (void *)player));
 		path = path->next;
-		i++;
+		i--;
 	}
 }

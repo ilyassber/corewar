@@ -1,0 +1,27 @@
+#!/bin/bash
+
+COUNT=1
+N=1
+DF=""
+
+echo "Check from cycle :"
+read COUNT
+echo "To :"
+read N
+echo "Start Checking ..."
+while [ $COUNT -le $N ] ;
+do
+	`./core -dump $COUNT sam_2.0.cor doge.cor > aaaa`
+	`./corewar -d $COUNT sam_2.0.cor doge.cor > bbbb`
+	`diff aaaa bbbb > cccc`
+	DF=`cat cccc`
+	if [ "$DF" != "" ] ;
+	then
+		echo $COUNT
+		echo "\n$DF\n"
+		exit 0
+	fi
+	((COUNT++))
+done
+
+

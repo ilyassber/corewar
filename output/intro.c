@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_live.c                                          :+:      :+:    :+:   */
+/*   intro.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/24 13:00:04 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/13 12:10:31 by iberchid         ###   ########.fr       */
+/*   Created: 2019/11/12 20:54:08 by iberchid          #+#    #+#             */
+/*   Updated: 2019/11/12 21:50:21 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../core.h"
 
-int	op_live(t_core *core, t_proc *proc)
+void	intro_players(t_core *core)
 {
+	t_hold		*hold;
 	t_player	*player;
-	int			id;
 
-	id = proc->inst->args[0];
-	if (id < 0)
-		id = id * -1;
-	player = get_player(core, id);
-	if (player)
+	hold = *(core->players);
+	ft_putstr("Introducing contestants...\n");
+	while (hold)
 	{
-		(proc->live)++;
-		(player->alive)++;
-		(player->lives)++;
-		return (1);
+		player = (t_player *)(hold->mem);
+		ft_putstr("* Player ");
+		ft_putnbr(player->id);
+		ft_putstr(", weighing ");
+		ft_putnbr(player->size);
+		ft_putstr(" bytes, \"");
+		ft_putstr(player->name);
+		ft_putstr("\" (\"");
+		ft_putstr(player->comment);
+		ft_putstr("\") !\n");
+		hold = hold->next;
 	}
-	return (0);
 }

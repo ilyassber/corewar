@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 14:50:27 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/03 17:33:50 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/13 17:46:40 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,11 @@ void	append_proc(t_hold **procs, t_hold *hold)
 	t_hold	*next;
 
 	next = *procs;
-	while (next && next->next)
-		next = next->next;
-	if (next)
-		next->next = hold;
-	else
-		*procs = hold;
+	hold->next = next;
+	*procs = hold;
 }
 
-int		remove_proc(t_hold **procs, int id)
+int		remove_proc(t_hold **procs, t_proc *proc)
 {
 	t_hold	*keep;
 	t_hold	*next;
@@ -34,18 +30,17 @@ int		remove_proc(t_hold **procs, int id)
 	keep = NULL;
 	while (next)
 	{
-		if (((t_proc *)next->mem)->id == id)
+		if (((t_proc *)next->mem) == proc)
 		{
-			if (keep && next->next)
+			if (keep)
 				keep->next = next->next;
-			else if (keep)
-				keep->next = NULL;
 			else if (next->next)
 				*procs = next->next;
 			else
 				*procs = NULL;
 			return (SUCCESS);
 		}
+		keep = next;
 		next = next->next;
 	}
 	return (ERROR);

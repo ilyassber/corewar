@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:50:51 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/08 01:22:38 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/13 10:11:30 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	{
+		x = 0;
 		g = init_env();
 		core = init_core(g, argv, argc);
+		init_engine(core);
 		x = engine(core);
+		//parser_loop(core);
 		ft_putnbr(x);
 		ft_putchar('\n');
 		/*

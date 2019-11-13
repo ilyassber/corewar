@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 11:27:01 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/03 17:36:37 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/13 17:15:35 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	ctd_check(t_core *core)
 		if (((t_proc *)proc->mem)->live == 0)
 		{
 			to_remove = proc;
+			remove_proc(core->procs, ((t_proc *)to_remove->mem));
 			proc = proc->next;
-			remove_proc(core->procs, ((t_proc *)to_remove->mem)->id);
 		}
 		else
 		{
@@ -58,10 +58,15 @@ int	max_check(t_core *core)
 	int	ctd_c;
 
 	ctd_c = ctd_check(core);
+	/*
+	ft_putstr("ctd_c = ");
+	ft_putnbr(ctd_c);
+	ft_putstr("\n");
+	*/
+	core->last_check = core->cycle;
 	if (ctd_c >= 21)
 	{
 		core->ctd -= CYCLE_DELTA;
-		core->last_check = core->cycle;
 		core->max_check = 0;
 	}
 	else
@@ -70,7 +75,6 @@ int	max_check(t_core *core)
 		if (core->max_check >= 10)
 		{
 			core->ctd -= CYCLE_DELTA;
-			core->last_check = core->cycle;
 			core->max_check = 0;
 		}
 	}

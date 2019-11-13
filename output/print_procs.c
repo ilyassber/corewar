@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 13:49:39 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/06 22:18:45 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/13 11:40:41 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	print_proc(t_proc *proc)
 		ft_putnbr(proc->id);
 		ft_putchar('\n');
 		ft_putnbr(proc->pointer);
+		ft_putchar(',');
+		ft_putnbr(proc->live);
 		ft_putchar(',');
 		ft_putnbr(proc->inst->inst);
 		ft_putchar(',');

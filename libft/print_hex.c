@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 22:36:24 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/05 13:12:22 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/12 21:12:54 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,16 @@ void	print_hex(char *str, int line_size, int size)
 	i = 0;
 	while (i < size)
 	{
+		if (i % line_size == 0)
+		{
+			ft_putstr("0x");
+			put_char_hex((char)(i / 256));
+			put_char_hex((char)(i % 256));
+			ft_putstr(" : ");
+		}
 		put_char_hex(str[i++]);
+		ft_putchar(' ');
 		if (i % line_size == 0)
 			ft_putchar('\n');
-		else
-			ft_putchar(' ');
 	}
 }

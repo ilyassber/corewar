@@ -1,0 +1,11 @@
+*.swo
+*.swp
+*.swn
+*.swm
+*.o
+*.s
+*.cor
+*.dSYM
+asm
+corewar
+.DS_Store

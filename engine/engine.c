@@ -6,25 +6,32 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 21:53:31 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/08 01:41:00 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/13 17:39:29 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../core.h"
 
-void static	init_engine(t_core *core)
+void		init_engine(t_core *core)
 {
 	parse_args(core, core->argv, core->argc);
 	extract_players(core);
 	init_procs(core);
 	init_area(core);
+	intro_players(core);
 }
 
 int			engine(t_core *core)
 {
-	init_engine(core);
-	while (procs_len(core))
+	while (procs_len(core) && core->ctd > 0)
 	{
+		/*
+		ft_putstr("ctd : ");
+		ft_putnbr(core->ctd);
+		ft_putstr(" - procs : ");
+		ft_putnbr(procs_len(core));
+		ft_putstr("\n");
+		*/
 		if (core->cycle == core->arg->dump)
 			dump(core);
 		check_procs(core);

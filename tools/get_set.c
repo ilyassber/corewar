@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 09:27:06 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/07 15:04:56 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/13 15:02:14 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,20 @@ int	get_value(t_core *core, t_proc *proc, int step, int l)
 
 void	set_value(t_core *core, t_proc *proc, int step, int value)
 {
-	int	i;
-	int	position;
+	int				i;
+	int				position;
+	unsigned int	u_value;
 
+	u_value = (unsigned int)value;
 	i = 4;
 	position = (proc->pointer + step) % MEM_SIZE;
 	if (position < 0)
 		position = position + MEM_SIZE;
 	while (i-- > 0)
 	{
-		core->area[(position + i) % MEM_SIZE] = value % 256;
-		value = value - (value % 256);
-		value = value / 256;
+		core->area[(position + i) % MEM_SIZE] = u_value % 256;
+		u_value = u_value - (u_value % 256);
+		u_value = u_value / 256;
 	}
 }
 
