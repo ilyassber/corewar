@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:00:04 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/13 12:10:31 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/17 23:07:48 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,16 @@ int	op_live(t_core *core, t_proc *proc)
 	int			id;
 
 	id = proc->inst->args[0];
-	if (id < 0)
-		id = id * -1;
+	id = id * -1;
+	(proc->live)++;
 	player = get_player(core, id);
 	if (player)
 	{
-		(proc->live)++;
+		/*
+		ft_putstr("Player ");
+		ft_putnbr(player->id);
+		ft_putstr(" is said to be alive\n");
+		*/
 		(player->alive)++;
 		(player->lives)++;
 		return (1);

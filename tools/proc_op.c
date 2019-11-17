@@ -6,12 +6,13 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 14:50:27 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/13 17:46:40 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/17 21:40:59 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../core.h"
 
+/*
 void	append_proc(t_hold **procs, t_hold *hold)
 {
 	t_hold	*next;
@@ -20,28 +21,26 @@ void	append_proc(t_hold **procs, t_hold *hold)
 	hold->next = next;
 	*procs = hold;
 }
+*/
 
-int		remove_proc(t_hold **procs, t_proc *proc)
+int		remove_proc(t_hold **procs, t_hold *proc)
 {
 	t_hold	*keep;
-	t_hold	*next;
 
-	next = *procs;
-	keep = NULL;
-	while (next)
+	/*
+	ft_putstr("remove proc - lives : ");
+	ft_putnbr(((t_proc *)(proc->mem))->live);
+	ft_putstr("\n");
+	*/
+	keep = proc->prec;
+	if (keep)
+		keep->next = proc->next;
+	else if (proc->next)
 	{
-		if (((t_proc *)next->mem) == proc)
-		{
-			if (keep)
-				keep->next = next->next;
-			else if (next->next)
-				*procs = next->next;
-			else
-				*procs = NULL;
-			return (SUCCESS);
-		}
-		keep = next;
-		next = next->next;
+		*procs = proc->next;
+		(*procs)->prec = NULL;
 	}
-	return (ERROR);
+	else
+		*procs = NULL;
+	return (SUCCESS);
 }

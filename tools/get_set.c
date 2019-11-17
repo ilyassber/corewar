@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 09:27:06 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/13 15:02:14 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/15 12:17:58 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	get_value(t_core *core, t_proc *proc, int step, int l)
 {
-	int	position;
-	int	value;
-	int	i;
+	int				position;
+	unsigned int	value;
+	int				i;
 
 	i = 0;
 	value = 0;
@@ -25,13 +25,32 @@ int	get_value(t_core *core, t_proc *proc, int step, int l)
 	position = (proc->pointer + step) % MEM_SIZE;
 	if (position < 0)
 		position = position + MEM_SIZE;
+	/*
+	ft_putstr("******* get *******\n");
+	ft_putnbr(proc->pointer);
+	ft_putstr(" - ");
+	ft_putnbr(step);
+	ft_putstr(" - ");
+	ft_putnbr(position);
+	ft_putstr(" - ");
+	*/
 	while (i < 4)
 	{
+		/*
+		ft_putnbr((int)((unsigned char)*(core->area + ((position + i) % MEM_SIZE))));
+		if (i < 3)
+			ft_putchar('*');
+		*/
 		value = value * 256;
-		value = value + (int)(*(core->area + ((position + i) % MEM_SIZE)));
+		value = value + (unsigned char)*(core->area + ((position + i) % MEM_SIZE));
 		i++;
 	}
-	return (value);
+	/*
+	ft_putstr(" - ");
+	ft_putnbr((int)value);
+	ft_putstr("\n*******************\n");
+	*/
+	return ((int)value);
 }
 
 void	set_value(t_core *core, t_proc *proc, int step, int value)

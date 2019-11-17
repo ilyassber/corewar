@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 17:04:15 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/12 10:33:11 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/15 16:12:26 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	get_args_type(t_inst *inst, char c)
 	return (1);
 }
 
-int	get_args(t_inst *inst, char *mem)
+int	get_args(t_inst *inst, char *mem, int m)
 {
 	int	i;
 	int	hold;
@@ -64,14 +64,18 @@ int	get_args(t_inst *inst, char *mem)
 		{
 			if ((inst->args_type[i - 1] == 2) &&
 					g_op_tab[inst->inst - 1].carry == 0 && (hold = 4))
-				inst->args[i - 1] = read_value(mem + inst->skip, 4);
+				inst->args[i - 1] = read_value(mem + ((inst->skip + m)
+							% MEM_SIZE), 4);
 			else if ((inst->args_type[i - 1] == 2) &&
 					g_op_tab[inst->inst - 1].carry == 1 && (hold = 2))
-				inst->args[i - 1] = read_value(mem + inst->skip, 2);
+				inst->args[i - 1] = read_value(mem + ((inst->skip + m)
+							% MEM_SIZE), 2);
 			else if (((inst->args_type[i - 1] == 4)) && (hold = 2))
-				inst->args[i - 1] = read_value(mem + inst->skip, 2);
+				inst->args[i - 1] = read_value(mem + ((inst->skip + m)
+							% MEM_SIZE), 2);
 			else if (((inst->args_type[i - 1] == 1)) && (hold = 1))
-				inst->args[i - 1] = read_value(mem + inst->skip, 1);
+				inst->args[i - 1] = read_value(mem + ((inst->skip + m)
+							% MEM_SIZE), 1);
 		}
 		inst->skip += hold;
 	}

@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/28 13:10:35 by iberchid          #+#    #+#             */
-/*   Updated: 2019/10/14 14:39:14 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/16 15:33:06 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,8 @@ void	duplicate_proc(t_proc *old, t_proc *new)
 		new->reg[i] = old->reg[i];
 		i++;
 	}
-	new->inst->inst = old->inst->inst;
-	i = 0;
-	while (i < 3)
-	{
-		new->inst->args_type[i] = old->inst->args_type[i];
-		new->inst->args[i] = old->inst->args[i];
-		i++;
-	}
 	new->carry = old->carry;
+	new->live = old->live;
 }
 
 int		op_fork(t_core *core, t_proc *proc)
@@ -43,6 +36,6 @@ int		op_fork(t_core *core, t_proc *proc)
 		new->pointer = new->pointer + MEM_SIZE;
 	new->inst = init_inst(core->g);
 	duplicate_proc(proc, new);
-	append_proc(core->procs, holding(core->g, (void *)new));
+	append_to_hold(core->procs, holding(core->g, (void *)new));
 	return (1);
 }

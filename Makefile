@@ -6,7 +6,7 @@
 #    By: bel-bouz <bel-bouz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/24 00:09:47 by bel-bouz          #+#    #+#              #
-#    Updated: 2019/11/12 21:08:25 by iberchid         ###   ########.fr        #
+#    Updated: 2019/11/16 23:14:49 by iberchid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ C_F =	core.c \
 		error/on_error.c \
 		output/print_procs.c \
 		output/intro.c \
+		output/print_inst.c \
 		op/op_add.c \
 		op/op_aff.c \
 		op/op_and.c \

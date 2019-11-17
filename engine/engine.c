@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 21:53:31 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/13 17:39:29 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/17 22:59:06 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,18 @@ int			engine(t_core *core)
 			dump(core);
 		check_procs(core);
 		(core->cycle)++;
+		//ft_putstr("/\\/\\/\\/\\/\\/\\/\\\n");
+		//ft_putnbr(core->cycle);
+		//ft_putstr("\n");
 		if (core->cycle == (core->last_check + core->ctd))
 			max_check(core);
+		/*
+		ft_putstr("ctd : ");
+		ft_putnbr(core->ctd);
+		ft_putstr(" - until ctd : ");
+		ft_putnbr(core->cycle - core->last_check);
+		ft_putstr("\n");
+		*/
 		//print_procs(core);
 	}
 	return (SUCCESS);

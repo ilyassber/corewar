@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 22:26:00 by iberchid          #+#    #+#             */
-/*   Updated: 2019/09/30 20:48:18 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/16 20:37:33 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@ int	op_and(t_core *core, t_proc *proc)
 	if (!is_reg(proc, 2))
 		return (0);
 	proc->reg[proc->inst->args[2] - 1] = res;
+	if (res == 0)
+		proc->carry = 1;
+	else
+		proc->carry = 0;
 	return (1);
 }

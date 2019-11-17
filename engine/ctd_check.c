@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 11:27:01 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/13 17:15:35 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/17 20:34:37 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ int	ctd_check(t_core *core)
 	lives = 0;
 	while (proc)
 	{
-		if (((t_proc *)proc->mem)->live == 0)
+		if (((t_proc *)(proc->mem))->live == 0)
 		{
 			to_remove = proc;
-			remove_proc(core->procs, ((t_proc *)to_remove->mem));
+			remove_proc(core->procs, to_remove);
 			proc = proc->next;
 		}
 		else
 		{
 			lives += ((t_proc *)proc->mem)->live;
-			((t_proc *)proc->mem)->live = 0;
+			((t_proc *)(proc->mem))->live = 0;
 			proc = proc->next;
 		}
 	}
@@ -58,11 +58,9 @@ int	max_check(t_core *core)
 	int	ctd_c;
 
 	ctd_c = ctd_check(core);
-	/*
-	ft_putstr("ctd_c = ");
-	ft_putnbr(ctd_c);
-	ft_putstr("\n");
-	*/
+	//ft_putstr("ctd_c = ");
+	//ft_putnbr(ctd_c);
+	//ft_putstr("\n");
 	core->last_check = core->cycle;
 	if (ctd_c >= 21)
 	{
@@ -78,5 +76,5 @@ int	max_check(t_core *core)
 			core->max_check = 0;
 		}
 	}
-	return (procs_len(core));
+	return (1);
 }

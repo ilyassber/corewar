@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 22:48:08 by iberchid          #+#    #+#             */
-/*   Updated: 2019/09/30 20:48:46 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/16 15:45:49 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,9 @@ int	op_xor(t_core *core, t_proc *proc)
 	res_or = arg1 | arg2;
 	proc->reg[proc->inst->args[2] - 1] =
 		(int)((unsigned int)res_or - (unsigned int)res_and);
+	if (proc->reg[proc->inst->args[2] - 1] == 0)
+		proc->carry = 1;
+	else
+		proc->carry = 0;
 	return (1);
 }

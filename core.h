@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:24:13 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/13 17:16:33 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/16 23:16:39 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct		s_hold
 {
 	void			*mem;
 	struct s_hold	*next;
+	struct s_hold	*prec;
 }					t_hold;
 
 typedef struct		s_arg
@@ -108,7 +109,7 @@ void				init_inst_params(t_inst *inst);
 int					is_op(char *mem);
 int					to_next_inst(char *mem, t_inst *inst);
 int					get_args_type(t_inst *inst, char c);
-int					get_args(t_inst *inst, char *mem);
+int					get_args(t_inst *inst, char *mem, int i);
 void				parser_loop(t_core *core);
 int					read_value(char *mem, int n);
 t_player			*get_player(t_core *core, int id);
@@ -147,8 +148,8 @@ int					jump_flags(char **argv, int argc);
 void				on_error(t_g *g, int code);
 void				parse_args(t_core *core, char **argv, int argc);
 void				extract_players(t_core *core);
-void				append_proc(t_hold **procs, t_hold *hold);
-int					remove_proc(t_hold **procs, t_proc *proc);
+//void				append_proc(t_hold **procs, t_hold *hold);
+int					remove_proc(t_hold **procs, t_hold *proc);
 void				init_procs(t_core *core);
 int					ctd_check(t_core *core);
 int					max_check(t_core *core);
@@ -162,5 +163,9 @@ void				dump(t_core *core);
 void				print_proc(t_proc *proc);
 void				print_procs(t_core *core);
 void				intro_players(t_core *core);
+void				print_reg(t_proc *proc, int i);
+void				print_dir(t_proc *proc, int i);
+void				print_ind(t_core *core, t_proc *proc, int i);
+void				print_inst(t_core *core, t_proc *proc);
 
 #endif

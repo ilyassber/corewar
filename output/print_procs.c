@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 13:49:39 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/13 11:40:41 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/17 19:12:19 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@ void	print_proc(t_proc *proc)
 	int	i;
 
 	i = 0;
-	if (proc)
+	if (proc)// && proc->queue == 1 && proc->wait == 1)
 	{
+		if (proc->queue == 1 && proc->wait == 1)
+			ft_putstr(">>>>>>>");
 		ft_putstr("##proc_");
 		ft_putnbr(proc->id);
 		ft_putchar('\n');
-		ft_putnbr(proc->pointer);
+		ft_putstr("0x");
+		put_char_hex((char)(proc->pointer / 256));
+		put_char_hex((char)(proc->pointer % 256));
 		ft_putchar(',');
 		ft_putnbr(proc->live);
 		ft_putchar(',');
