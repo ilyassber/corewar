@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:50:51 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/13 10:11:30 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/25 15:13:15 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	main(int argc, char **argv)
 		init_engine(core);
 		x = engine(core);
 		//parser_loop(core);
-		ft_putnbr(x);
-		ft_putchar('\n');
 		/*
 		core = (t_core *)ft_alloc(g->mem, sizeof(t_core));
 		core->g = g;

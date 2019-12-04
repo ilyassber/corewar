@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 12:35:28 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/15 10:11:42 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:41:50 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_core	*init_core(t_g *g, char **argv, int argc)
 	core->check = 0;
 	core->last_check = 0;
 	core->max_check = 0;
+	core->winner = 1;
 	core->argv = argv;
 	core->argc = argc;
 	core->players = (t_hold **)ft_alloc(g->mem, sizeof(t_hold *));

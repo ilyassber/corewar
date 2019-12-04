@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 22:31:10 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/17 20:00:37 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/25 19:07:02 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	check_proc(t_core *core, t_proc *proc)
 		if (check_args(proc->inst) && is_reg(proc, 0) && is_reg(proc, 1)
 				&& is_reg(proc, 2))
 		{
-			//ft_putstr("<<<>>><<<>>><<<>>>\n");
+			//ft_putstr(g_op_tab[proc->inst->inst - 1].op_name);
+			//ft_putchar('\n');
 			//print_inst(core, proc);
 			func(core, proc);
 		}
@@ -69,4 +70,5 @@ void	check_procs(t_core *core)
 			check_proc(core, (t_proc *)(hold->mem));
 		hold = hold->next;
 	}
+	loop_out(core);
 }

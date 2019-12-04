@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 18:06:14 by iberchid          #+#    #+#             */
-/*   Updated: 2019/09/24 17:55:26 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:25:24 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_inst_params(t_inst *inst)
 {
 	inst->inst = 0;
 	inst->skip = 0;
+	inst->update = -1;
 	inst->args_type[0] = 0;
 	inst->args_type[1] = 0;
 	inst->args_type[2] = 0;

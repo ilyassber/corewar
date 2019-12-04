@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/21 16:51:17 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/13 09:50:48 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/17 23:19:48 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	parser_loop(t_core *core)
 	{
 		if (get_inst(core, proc))
 		{
-			get_args_type(proc->inst, *(core->area + proc->pointer + 1));
-			get_args(proc->inst, core->area + proc->pointer + 1);
+			get_args_type(proc->inst, *(core->area +
+						((proc->pointer + 1) % MEM_SIZE)));
+			get_args(proc->inst, core->area, ((proc->pointer + 1) % MEM_SIZE));
 			(proc->inst->skip)++;
 			printf("op : %d\t- Encoding : %d - Types : %d, %d, %d - ARGS : %d\t, %d\t, %d\n",
 					proc->inst->inst,

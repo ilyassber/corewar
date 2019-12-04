@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 10:28:05 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/03 15:43:58 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/12/04 22:03:19 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	print_error(int code)
 		ft_putstr_fd("ERROR : UNVALID ARGUMENT\n", 2);
 	else if (code == UNVALID_PATH)
 		ft_putstr_fd("ERROR : UNVALID PATH\n", 2);
+	else if (code == OVER_MAX_SIZE)
+		ft_putstr_fd("ERROR : PLAYER SIZE OVER MAX SIZE\n", 2);
 }
 
 void		on_error(t_g *g, int code)

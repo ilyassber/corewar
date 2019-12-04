@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 11:27:01 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/17 20:34:37 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:49:29 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int	max_check(t_core *core)
 			core->max_check = 0;
 		}
 	}
+	init_lives(core->players);
 	return (1);
 }

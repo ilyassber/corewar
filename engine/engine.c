@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/05 21:53:31 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/17 22:59:06 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/25 15:01:26 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void		init_engine(t_core *core)
 	init_procs(core);
 	init_area(core);
 	intro_players(core);
+	normal_out(core);
 }
 
 int			engine(t_core *core)
@@ -50,5 +51,6 @@ int			engine(t_core *core)
 		*/
 		//print_procs(core);
 	}
+	print_winner(core);
 	return (SUCCESS);
 }

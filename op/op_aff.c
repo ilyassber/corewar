@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 21:44:19 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/15 13:31:39 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/21 13:05:07 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 int	op_aff(t_core *core, t_proc *proc)
 {
-	int	value;
+	int		value;
+	char	c;
 
-	if (!is_reg(proc, 0))
+	value = get_arg_value(core, proc, 0, 0) % 256;
+	if (value <= 0)
 		return (0);
-	value = get_arg_value(core, proc, 0, 0);
-	ft_putchar((char)(value % 256));
+	c = (char)value;
+	//write(1, &c, 1);
 	return (1);
 }

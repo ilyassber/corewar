@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 13:00:04 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/17 23:07:48 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/25 14:40:40 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	op_live(t_core *core, t_proc *proc)
 		ft_putnbr(player->id);
 		ft_putstr(" is said to be alive\n");
 		*/
-		(player->alive)++;
+		player->alive = core->cycle;
+		core->winner = id;
 		(player->lives)++;
 		return (1);
 	}

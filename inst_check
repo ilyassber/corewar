@@ -1,0 +1,38 @@
+#!/bin/bash
+
+CHAMP="zork.cor"
+CHECK="zork.check"
+
+echo "live" > $CHECK
+echo `./core $CHAMP | grep "live" | wc -l` >> $CHECK
+echo "ld" >> $CHECK
+echo `./core $CHAMP | grep "ld" | wc -l` >> $CHECK
+echo "st" >> $CHECK
+echo `./core $CHAMP | grep "st" | wc -l` >> $CHECK
+echo "add" >> $CHECK
+echo `./core $CHAMP | grep "add" | wc -l` >> $CHECK
+echo "sub" >> $CHECK
+echo `./core $CHAMP | grep "sub" | wc -l` >> $CHECK
+echo "and" >> $CHECK
+echo `./core $CHAMP | grep "and" | wc -l` >> $CHECK
+echo "or" >> $CHECK
+echo `./core $CHAMP | grep "or" | wc -l` >> $CHECK
+echo "xor" >> $CHECK
+echo `./core $CHAMP | grep "xor" | wc -l` >> $CHECK
+echo "zjmp" >> $CHECK
+echo `./core $CHAMP | grep "zjmp" | wc -l` >> $CHECK
+echo "ldi" >> $CHECK
+echo `./core $CHAMP | grep "ldi" | wc -l` >> $CHECK
+echo "sti" >> $CHECK
+echo `./core $CHAMP | grep "sti" | wc -l` >> $CHECK
+echo "fork" >> $CHECK
+echo `./core $CHAMP | grep "fork" | wc -l` >> $CHECK
+echo "lld" >> $CHECK
+echo `./core $CHAMP | grep "lld" | wc -l` >> $CHECK
+echo "lldi" >> $CHECK
+echo `./core $CHAMP | grep "lldi" | wc -l` >> $CHECK
+echo "lfork" >> $CHECK
+echo `./core $CHAMP | grep "lfork" | wc -l` >> $CHECK
+echo "aff" >> $CHECK
+echo `./core $CHAMP | grep "aff" | wc -l` >> $CHECK
+echo $CHECK

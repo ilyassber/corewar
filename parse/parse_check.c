@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 19:31:16 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/03 15:16:03 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/25 15:09:13 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ int	check_order(t_arg *arg, char **argv, int argc)
 		i++;
 	}
 	return (1);
+}
+
+void	check_visual(t_arg *arg, char **argv, int argc)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (ft_strcmp(argv[i], "-v"))
+		{
+			arg->v = 1;
+			i = argc;
+		}
+		i++;
+	}
 }
 
 int	check_flags(char **argv, int argc)

@@ -17,8 +17,8 @@ then
 fi
 while [ $COUNT -le $N ] ;
 do
-	`./core -dump $COUNT helltrain.cor > aaaa`
-	`./corewar -d $COUNT helltrain.cor > bbbb`
+	`./core -dump $COUNT Explosive_kitty.cor > aaaa`
+	`./corewar -d $COUNT Explosive_kitty.cor > bbbb`
 	`diff aaaa bbbb > cccc`
 	DF=`cat cccc`
 	if [ "$DF" != "" ] ;

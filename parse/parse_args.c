@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 14:35:52 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/06 18:00:09 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/25 15:11:18 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void static	parse_args_check(t_core *core, char **argv, int argc)
 {
 	on_error(core->g, check_flags(argv, argc));
 	on_error(core->g, check_players(core->arg, argv, argc));
+	check_visual(core->arg, argv, argc);
 	if (check_order(core->arg, argv, argc))
 		core->arg->order = jump_flags(argv, argc);
 }

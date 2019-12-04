@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_procs.c                                       :+:      :+:    :+:   */
+/*   init_lives.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/13 22:58:25 by iberchid          #+#    #+#             */
-/*   Updated: 2019/12/04 13:29:35 by iberchid         ###   ########.fr       */
+/*   Created: 2019/11/25 14:42:45 by iberchid          #+#    #+#             */
+/*   Updated: 2019/11/25 14:50:57 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../core.h"
 
-void	init_procs(t_core *core)
+void	init_lives(t_hold **players)
 {
-	t_proc	*proc;
-	int		i;
+	t_hold		*hold;
+	t_player	*player;
 
-	i = 1;
-	while (i <= core->arg->n)
+	hold = *players;
+	while (hold)
 	{
-		proc = init_proc(core->g);
-		proc->reg[0] = -i;
-		proc->creator_id = i;
-		proc->inst = init_inst(core->g);
-		proc->pointer = (MEM_SIZE / core->arg->n) * (i - 1);
-		append_to_hold(core->procs, holding(core->g, (void *)proc));
-		i++;
+		player = (t_player *)(hold->mem);
+		player->lives = 0;
+		hold = hold->next;
 	}
 }

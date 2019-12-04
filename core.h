@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 11:24:13 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/16 23:16:39 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/12/04 22:01:20 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define BAD_ORDER			-12
 # define UNVALID_ARG		-13
 # define UNVALID_PATH		-14
+# define OVER_MAX_SIZE		-15
 
 # define EST ft_putstr("esti!!\n");
 # define RUN ft_putstr("RUUN RUUN!!\n");
@@ -45,6 +46,7 @@ typedef struct		s_arg
 {
 	int				dump;
 	int				n;
+	int				v;
 	int				order;
 	t_hold			**paths;
 }					t_arg;
@@ -68,11 +70,12 @@ typedef struct		s_inst
 	char			args_type[3];
 	int				args[3];
 	int				skip;
+	int				update;
 }					t_inst;
 
 typedef struct		s_proc
 {
-	int				id;
+	int				creator_id;
 	int				pointer;
 	int				carry;
 	int				reg[16];
@@ -90,6 +93,7 @@ typedef struct		s_core
 	int				last_check;
 	int				max_check;
 	int				check;
+	int				winner;
 	char			**argv;
 	int				argc;
 	t_arg			*arg;
@@ -143,6 +147,7 @@ int					check_players(t_arg *arg, char **argv, int argc);
 int					get_dump(char **argv, int argc);
 int					check_flags(char **argv, int argc);
 int					check_order(t_arg *arg, char **argv, int argc);
+void				check_visual(t_arg *arg, char **argv, int argc);
 char				*get_arg_by_order(char **argv, int argc, int n);
 int					jump_flags(char **argv, int argc);
 void				on_error(t_g *g, int code);
@@ -167,5 +172,13 @@ void				print_reg(t_proc *proc, int i);
 void				print_dir(t_proc *proc, int i);
 void				print_ind(t_core *core, t_proc *proc, int i);
 void				print_inst(t_core *core, t_proc *proc);
+void				print_players(t_core *core);
+void				cycle_info(t_core *core);
+void				procs_info(t_core *core);
+void				players_info(t_core *core);
+void				normal_out(t_core *core);
+void				loop_out(t_core *core);
+void				init_lives(t_hold **players);
+void				print_winner(t_core *core);
 
 #endif

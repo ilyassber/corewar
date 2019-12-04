@@ -6,7 +6,7 @@
 /*   By: iberchid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 09:27:06 by iberchid          #+#    #+#             */
-/*   Updated: 2019/11/15 12:17:58 by iberchid         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:56:22 by iberchid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	set_value(t_core *core, t_proc *proc, int step, int value)
 	position = (proc->pointer + step) % MEM_SIZE;
 	if (position < 0)
 		position = position + MEM_SIZE;
+	proc->inst->update = position;
 	while (i-- > 0)
 	{
 		core->area[(position + i) % MEM_SIZE] = u_value % 256;
